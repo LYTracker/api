@@ -1,0 +1,20 @@
+model Node {
+    id          String    @id @default(uuid())
+    title       String
+    type        NodeType
+    content     String?
+    board       Board     @relation(fields: [boardId], references: [id])
+    boardId     String
+    width       Float     @default(260)
+    style       String    @default("")
+    coordinates Json      @default("{}")
+    createdAt   DateTime  @default(now())
+    updatedAt   DateTime  @updatedAt
+    deletedAt   DateTime?
+}
+
+enum NodeType {
+    TEXT
+    TODO
+    GRAPH
+}
