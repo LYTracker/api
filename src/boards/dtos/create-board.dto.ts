@@ -5,9 +5,7 @@ export class CreateBoardDto {
   @IsNotEmpty()
   title!: string;
 
-  @IsString()
-  description!: string;
-
   @IsUUID()
+  @IsNotEmpty()
   ownerId!: string;
 }
