@@ -2,15 +2,16 @@ model Node {
     id          String    @id @default(uuid())
     title       String
     type        NodeType
-    content     String?
+    content     Json?
     board       Board     @relation(fields: [boardId], references: [id])
-    boardId     String
+    boardId     String    @map("board_id")
     width       Float     @default(260)
-    style       String    @default("")
     coordinates Json      @default("{}")
-    createdAt   DateTime  @default(now())
-    updatedAt   DateTime  @updatedAt
-    deletedAt   DateTime?
+    createdAt   DateTime  @default(now()) @map("created_at")
+    updatedAt   DateTime  @updatedAt @map("updated_at")
+    deletedAt   DateTime? @map("deleted_at")
+
+    @@map("nodes")
 }
 
 enum NodeType {
